@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.ButtonDefaults
@@ -29,10 +30,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.jetnote.components.NoteButton
 import com.example.jetnote.components.NoteInputTextField
+import com.example.jetnote.model.Note
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NoteScreen() {
+fun NoteScreen(
+    notes: List<Note>,
+    onAddNote: (Note) -> Unit,
+    onRemove: (Note) -> Unit
+) {
+
     var title by remember { mutableStateOf("") }
     var description by remember { mutableStateOf("") }
 
@@ -89,7 +96,7 @@ fun NoteScreen() {
                 },
             )
             NoteButton(
-                modifier = Modifier.padding(top = 20.dp),
+                modifier = Modifier.padding(top = 20.dp).width(100.dp),
                 text = "Save",
                 colors = ButtonDefaults.elevatedButtonColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
@@ -97,7 +104,7 @@ fun NoteScreen() {
                 ),
                 onClick = {
                     if (title.isNotEmpty() && description.isNotEmpty()) {
-
+                        //TODO -> Save Note
                         title = ""
                         description = ""
                     }
@@ -111,5 +118,5 @@ fun NoteScreen() {
 @Preview(showBackground = true)
 @Composable
 fun NoteScreenPreview() {
-    NoteScreen()
+    NoteScreen(emptyList(), {}, {})
 }
