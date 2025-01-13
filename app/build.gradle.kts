@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -63,23 +64,16 @@ dependencies {
     //Hilt-Dagger (Dependency Injection tool)
     implementation("com.google.dagger:hilt-android:2.51.1")
     kapt("com.google.dagger:hilt-android-compiler:2.51.1")
-    /*
-        implementation "com.google.dagger:hilt-android:$hilt_version"
-        kapt "com.google.dagger:hilt-compiler:$hilt_version"
-
     //Room
-        implementation "androidx.room:room-runtime:$room_version"
-        annotationProcessor "androidx.room:room-compiler:$room_version"
-
-    // To use Kotlin annotation processing tool (kapt) MUST HAVE!
-        kapt("androidx.room:room-compiler:$room_version")
-        implementation "androidx.room:room-ktx:$room_version"
-
-
-    // Coroutines
-        implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
-        implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
-        implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.5.2"*/
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    ksp("androidx.room:room-compiler:$room_version")
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:$room_version")
+    //Coroutines
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.9.0")
 }
 
 kapt {
