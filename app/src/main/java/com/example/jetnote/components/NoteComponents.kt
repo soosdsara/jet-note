@@ -86,10 +86,10 @@ fun NoteWidget(
         Column(Modifier.padding(horizontal = 14.dp, vertical = 6.dp)) {
             Text(note.title, fontWeight = FontWeight.Medium)
             Text(note.description)
-            Text(
-                note.entryDate.format(DateTimeFormatter.ofPattern("EEE, d MMM")),
-                style = MaterialTheme.typography.bodySmall
-            )
+//            Text(
+//                note.entryDate.format(DateTimeFormatter.ofPattern("EEE, d MMM")),
+//                style = MaterialTheme.typography.bodySmall
+//            )
         }
     }
 }
