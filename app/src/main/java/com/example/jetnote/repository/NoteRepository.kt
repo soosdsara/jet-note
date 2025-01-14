@@ -14,5 +14,5 @@ class NoteRepository @Inject constructor(private val noteDatabaseDao: NoteDataba
     suspend fun deleteAllNotes() = noteDatabaseDao.deleteAll()
     suspend fun updateNote(note: Note) = noteDatabaseDao.updateNote(note)
     suspend fun getNoteById(id: String) = noteDatabaseDao.getNoteById(id)
-    fun getNotes() = noteDatabaseDao.getNotes().flowOn(Dispatchers.IO).conflate()
+    fun getNotes() = noteDatabaseDao.getNotes().flowOn(Dispatchers.IO).conflate() //Ezt nem értem miért kell ide
 }

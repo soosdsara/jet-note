@@ -29,7 +29,6 @@ fun NoteInputTextField(
     modifier: Modifier = Modifier,
     text: String,
     label: String,
-    maxLine: Int = 1,
     onTextChange: (String) -> Unit,
     onImeAction: () -> Unit = {}
 ) {
@@ -37,14 +36,13 @@ fun NoteInputTextField(
     OutlinedTextField(
         value = text,
         onValueChange = onTextChange,
-        maxLines = maxLine,
         label = { Text(label) },
         keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done),
         keyboardActions = KeyboardActions(onDone = {
             onImeAction()
             keyboardController?.hide()
         }),
-        modifier = modifier
+        modifier = modifier,
     )
 }
 

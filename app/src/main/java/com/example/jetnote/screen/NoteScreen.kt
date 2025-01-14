@@ -30,13 +30,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.jetnote.components.NoteButton
 import com.example.jetnote.components.NoteInputTextField
 import com.example.jetnote.components.NoteWidget
-import com.example.jetnote.data.NotesDataSource
 import com.example.jetnote.model.Note
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -88,7 +85,7 @@ fun NoteScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             NoteInputTextField(
-                modifier = Modifier.padding(top = 20.dp),
+                modifier = Modifier.padding(top = 20.dp).width(290.dp),
                 text = title,
                 label = "Title",
                 onTextChange = {
@@ -96,7 +93,7 @@ fun NoteScreen(
                 },
             )
             NoteInputTextField(
-                modifier = Modifier.padding(top = 10.dp),
+                modifier = Modifier.padding(top = 10.dp).width(290.dp),
                 text = description,
                 label = "Description",
                 onTextChange = {
@@ -137,10 +134,4 @@ fun NoteScreen(
             }
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun NoteScreenPreview() {
-    NoteScreen(NotesDataSource().loadNotes(), {}, {})
 }
