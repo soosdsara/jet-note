@@ -21,8 +21,10 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
+import com.example.jetnote.data.converter.DateConverter
 import com.example.jetnote.model.Note
-import java.time.format.DateTimeFormatter
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 @Composable
 fun NoteInputTextField(
@@ -43,6 +45,7 @@ fun NoteInputTextField(
             keyboardController?.hide()
         }),
         modifier = modifier,
+        //TODO -> Add supporting text for title, if it is not letter or space
     )
 }
 
@@ -84,10 +87,13 @@ fun NoteWidget(
         Column(Modifier.padding(horizontal = 14.dp, vertical = 6.dp)) {
             Text(note.title, fontWeight = FontWeight.Medium)
             Text(note.description)
-//            Text(
-//                note.entryDate.format(DateTimeFormatter.ofPattern("EEE, d MMM")),
-//                style = MaterialTheme.typography.bodySmall
-//            )
+            Text(
+                SimpleDateFormat(
+                    "yyyy-MM-dd EEE HH:mm:ss",
+                    Locale.getDefault()
+                ).format(DateConverter().timeStampFromDate(note.entryDate)),
+                style = MaterialTheme.typography.bodySmall
+            )
         }
     }
 }

@@ -68,7 +68,7 @@ fun NoteScreen(
                         modifier = Modifier.padding(end = 18.dp),
                         containerColor = MaterialTheme.colorScheme.secondaryContainer,
                         contentColor = MaterialTheme.colorScheme.secondary,
-                        onClick = { /*TODO*/ }) {
+                        onClick = { /*TODO -> Bring up-down the new note format*/ }) {
                         Icon(
                             imageVector = Icons.Default.Edit,
                             contentDescription = "Note Icon",
@@ -85,7 +85,9 @@ fun NoteScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             NoteInputTextField(
-                modifier = Modifier.padding(top = 20.dp).width(290.dp),
+                modifier = Modifier
+                    .padding(top = 20.dp)
+                    .width(290.dp),
                 text = title,
                 label = "Title",
                 onTextChange = {
@@ -93,7 +95,9 @@ fun NoteScreen(
                 },
             )
             NoteInputTextField(
-                modifier = Modifier.padding(top = 10.dp).width(290.dp),
+                modifier = Modifier
+                    .padding(top = 10.dp)
+                    .width(290.dp),
                 text = description,
                 label = "Description",
                 onTextChange = {
@@ -129,6 +133,8 @@ fun NoteScreen(
                 items(notes) { note ->
                     NoteWidget(note = note, onClick = {
                         onRemove(note)
+                        //TODO -> Tap: Bring up-down the note format, fill the fields with the note data and can update the note
+                        //TODO -> Long tap: Bring up a delete button
                     })
                 }
             }
